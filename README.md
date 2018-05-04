@@ -1,7 +1,7 @@
 # Point_me
 ios课程 第二个实验
 
-点我啊
+点我啊 swift 4.0
 ===
 
 ## 功能
@@ -11,16 +11,10 @@ ios课程 第二个实验
 - 通过slide来旋转图片
 - 动作的动画
 
-
-
-## swift 4.0
-
-
-## 思路
-利用button来响应事件，通过button的tag来确定点击的按。
+## 效果
 ![效果](https://img-blog.csdn.net/20180504195500781?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYWxpYW5nMjQwMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-
+# 功能解释
 
 ### 上下平移
 通过center来上下平移
@@ -33,7 +27,8 @@ ios课程 第二个实验
 
 
  建立一个imageview  在目录下建立个image文件夹，放入图片
-
+ 
+```
  let imgArr=[UIImage(named: "1_13.jpg")!,
 
  UIImage(named: "1_31.jpg")!,
@@ -41,6 +36,8 @@ ios课程 第二个实验
  UIImage(named: "imag.jpg")!,
 
  ]
+ 
+ ```
 
 可以设置轮播
 
@@ -78,6 +75,7 @@ let rotationAnim = CABasicAnimation(keyPath: "transform.rotation.z")
 // // 3.将动画添加到layer中
 
 // myImageView.layer.add(rotationAnim, forKey: nil)
+
 ```
 
 
