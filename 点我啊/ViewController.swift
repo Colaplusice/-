@@ -13,12 +13,9 @@ class ViewController: UIViewController {
     var myImageView:UIImageView!
     var myslider:UISlider!
     override func viewDidLoad() {
-        
-
          myImageView = UIImageView(
                 frame: CGRect(
                         x: 0, y: 0, width: 200, height: 200))
-        
         let imgArr=[UIImage(named: "1_13.jpg")!,
                     UIImage(named: "1_31.jpg")!,
                     UIImage(named: "imag.jpg")!,
@@ -40,7 +37,6 @@ class ViewController: UIViewController {
                      UIImage(named: "left.jpeg")!,
                      UIImage(named: "down.png")!,
                      UIImage(named: "right.jpeg")!,
-
                      ]
         
 //        var buttonarr:Ar
@@ -71,15 +67,11 @@ button1.center=CGPoint(x:fullScreenSize.width*0.2*CGFloat(i%5)+CGFloat(30),y:ful
                 y: fullScreenSize.height * 0.15)
         self.view.addSubview(myImageView)
         super.viewDidLoad()
-
-        
         
 //        uislider
-        
-        
         myslider=UISlider(frame: CGRect(x:20, y:380, width: 300, height: 20))
         
-        myslider.addTarget(self, action: #selector(valuechanged(_sender:)), for:UIControlEvents.valueChanged)
+        myslider.addTarget(self, action: #selector(valuechanged(sender:)), for:UIControlEvents.valueChanged)
         myslider.minimumValue=0
         myslider.maximumValue=180
         self.view.addSubview(myslider)
@@ -94,35 +86,40 @@ button1.center=CGPoint(x:fullScreenSize.width*0.2*CGFloat(i%5)+CGFloat(30),y:ful
         }
         //stop
         if sender.tag==1{
-            myImageView.stopAnimating()
+            UIView.animate(withDuration: 1.0) {
+               self.myImageView.stopAnimating()
+
+            }
+            
         }
         //放大
         if sender.tag==2{
-            var resize = CGRect()
-            resize = self.myImageView.frame
-            if (resize.size.width*(10/9)<self.fullScreenSize.width&&resize.size.height*(10/9)<self.fullScreenSize.height){
-                resize.size.height*=(10/9)
+            UIView.animate(withDuration: 1.0) {
+                var resize = self.myImageView.bounds
+                if (resize.size.width*(10/9)<self.fullScreenSize.width&&resize.size.height*(10/9)<self.fullScreenSize.height){
+                    resize.size.height*=(10/9)
                     resize.size.width*=(10/9)
+                }
+                self.myImageView.bounds=resize
             }
-            self.myImageView.frame=resize
         }
         //up
         if sender.tag==3{
-            var resize = CGRect()
-            resize = self.myImageView.frame
-            
-            resize.origin.y -= 20
-            
-            self.myImageView.frame=resize
+            UIView.animate(withDuration: 1.0) {
+                var resize = self.myImageView.center
+                resize.y -= 20
+                self.myImageView.center=resize
+            }
+       
         }
         //缩小
         if sender.tag==4{
-            var resize = CGRect()
-            resize = self.myImageView.frame
-            
-            resize.size.width/=(10/9)
-            resize.size.height/=(10/9)
-            self.myImageView.frame=resize
+            UIView.animate(withDuration: 1.0) {
+                var resize = self.myImageView.bounds
+                resize.size.width/=(10/9)
+                resize.size.height/=(10/9)
+                self.myImageView.bounds=resize
+            }
         }
         //右旋转
         
@@ -139,50 +136,56 @@ button1.center=CGPoint(x:fullScreenSize.width*0.2*CGFloat(i%5)+CGFloat(30),y:ful
             //            // 3.将动画添加到layer中
             //            myImageView.layer.add(rotationAnim, forKey: nil)
             //            var transform:CGAffineTransform
-            let rad = (20/180*Float(Double.pi))
-            myImageView.transform=myImageView.transform.rotated(by: CGFloat(rad))
+            UIView.animate(withDuration: 1.0) {
+                let rad = (20/180*Float(Double.pi))
+                self.myImageView.transform=self.myImageView.transform.rotated(by: CGFloat(rad))
+            }
+        
             
         }
         //        左旋转
         if sender.tag==6{
-            let rad = -(20/180*Float(Double.pi))
-            myImageView.transform=myImageView.transform.rotated(by: CGFloat(rad))
-            
+            UIView.animate(withDuration: 1.0) {
+                let rad = -(20/180*Float(Double.pi))
+self.myImageView.transform=self.myImageView.transform.rotated(by: CGFloat(rad))
+            }
         }
         //left
         if sender.tag==7{
-            var resize = CGRect()
-            resize = self.myImageView.frame
+            UIView.animate(withDuration: 1.0) {
+                var resize = self.myImageView.center
+                
+                resize.x -= 20
+                
+                self.myImageView.center=resize
+            }
             
-            resize.origin.x -= 20
-            
-            self.myImageView.frame=resize
+        
         }
         //down
         if sender.tag==8{
-            var resize = CGRect()
-            resize = self.myImageView.frame
-            
-            resize.origin.y += 20
-            
-            self.myImageView.frame=resize
+            UIView.animate(withDuration: 1.0) {
+                var resize = self.myImageView.center
+                resize.y += 20
+                self.myImageView.center=resize
+            }
+           
         }
-      
         //right
         if sender.tag==9{
-            var resize = CGRect()
-            resize = self.myImageView.frame
-            resize.origin.x += 20
-            self.myImageView.frame=resize
+            UIView.animate(withDuration: 1.0) {
+                var resize =  self.myImageView.center
+                resize.x += 20
+                self.myImageView.center=resize
+            }
+      
         }
     }
-   
-    @IBAction func valuechanged(_sender:UISlider){
-        let deg=_sender.value
+    @IBAction func valuechanged(sender:UISlider){
+        let deg=sender.value
         let rad=deg/180*Float(Double.pi)
         myImageView.transform=CGAffineTransform(rotationAngle: CGFloat(rad))
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

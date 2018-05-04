@@ -4,13 +4,21 @@ ios课程 第二个实验
 点我啊
 ===
 
+## 功能
+
+* 图片循环播放，暂停播放
+- 上下左右平移，旋转
+- 通过slide来旋转图片
+- 动作的动画
+
+
+
 ## swift 4.0
 
 
 ## 思路
 利用button来响应事件，通过button的tag来确定点击的按。
-
-![屏幕快照 2018-05-04 下午7.39.19]($res/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-05-04%20%E4%B8%8B%E5%8D%887.39.19.png)
+![效果](https://img-blog.csdn.net/20180504195500781?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmppYWxpYW5nMjQwMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
 
@@ -100,3 +108,4 @@ let rotationAnim = CABasicAnimation(keyPath: "transform.rotation.z")
 
 ```
 
+#### [github](https://github.com/Colaplusice/Point_me)
