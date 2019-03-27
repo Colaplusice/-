@@ -16,7 +16,7 @@ class ViewController: UIViewController {
          myImageView = UIImageView(
                 frame: CGRect(
                         x: 0, y: 0, width: 200, height: 200))
-        let imgArr=[UIImage(named: "1_13.jpg")!,
+        let imgArr=[UIImage( named: "1_13.jpg")!,
                     UIImage(named: "1_31.jpg")!,
                     UIImage(named: "imag.jpg")!,
                     ]
